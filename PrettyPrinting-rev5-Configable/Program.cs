@@ -18,40 +18,18 @@ namespace PrettyPrinting_rev1
                 LineSpacing = 2
             };
 
-            //Console.WriteLine("What text do you want prettified(not petrified)? Press enter for each line and when you are done type 'continue'.");
             List<string> inputList = GetInput();
-            Console.WriteLine(inputList.Count); 
             foreach(string input in inputList)
             {
                 Console.WriteLine(input);
             }
 
-            //Console.WriteLine("Do you want to configure the settings? y/n");
-            //if (String.Compare(Console.ReadLine(), "y", true) != 1)
-            //{
-            //    Console.WriteLine("Input a single character as design characters");
-            //    Console.WriteLine("...for the top and bottom.");
-            //    horizontalCharacter = GetDesign();
-            //    Console.WriteLine("...for the sides.");
-            //    verticalCharacter = GetDesign();
-            //    Console.WriteLine("...for the corners.");
-            //    corner = GetDesign();
-            //    Console.WriteLine("Input a number ranging from 0 to 9.");
-            //    Console.WriteLine("...for the distance between the middle and top.");
-            //    verticalPadding = GetSpacing();
-            //    Console.WriteLine("...for the distance between the left and the middle.");
-            //    horizontalPadding = GetSpacing();
-            //    Console.WriteLine("...for the spacing between the lines.");
-            //    lineSpacing = GetSpacing();
-
-            //}
-
-            //PrintItPretty(input, corner, horizontalCharacter, verticalCharacter, horizontalPadding, verticalPadding, lineSpacing);
         }
 
         public static List<string> GetInput()
         {
             Console.WriteLine("Start GetInput");
+            Console.WriteLine("Type continue to finish your input");
             List<string> inputList = new List<string>();
             string input;
             do {
@@ -93,38 +71,6 @@ namespace PrettyPrinting_rev1
             }
             return spacing;
         }
-
-        //public static void PrintItPretty(List<string> input, char corner, char horizontalCharacter, char verticalCharacter, int horizontalPadding, int verticalPadding, int lineSpacing)
-        //{
-        //    string longestString = input.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur);
-        //    int width = longestString.Length + (horizontalPadding * 2);
-
-        //    string line15 = corner + new string(horizontalCharacter, width) + corner;
-        //    string line24 = verticalCharacter + new string(' ', width) + verticalCharacter;
-        //    string line3 = verticalCharacter + new string(' ', horizontalPadding) + input + new string(' ', horizontalPadding) + verticalCharacter;
-
-        //    Console.WriteLine(line15);
-        //    for (int i = 0; i < verticalPadding; i++)
-        //    {
-        //        Console.WriteLine(line24);
-        //    }
-        //    for (int i = 0; i < input.Count; i++)
-        //    {
-        //        Console.WriteLine(verticalCharacter + new string(' ', horizontalPadding) + input[i] + new string(' ', horizontalPadding + (longestString.Length - input[i].Length)) + verticalCharacter);
-        //        if (i != input.Count - 1)
-        //        {
-        //            for (int x = 0; x < lineSpacing; x++)
-        //            {
-        //                Console.WriteLine(line24);
-        //            }
-        //        }
-        //    }
-        //    for (int i = 0; i < verticalPadding; i++)
-        //    {
-        //        Console.WriteLine(line24);
-        //    }
-        //    Console.WriteLine(line15);
-        //}
     }
     public class PrettyPrintDesignDTO
     {
@@ -136,11 +82,4 @@ namespace PrettyPrinting_rev1
         public int LineSpacing { get; set; }
     }
 
-    public class PrettyPrint
-    {
-       public PrettyPrint()
-        {
-
-        } 
-    }
 }
