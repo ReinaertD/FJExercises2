@@ -7,35 +7,48 @@ namespace PrettyPrinting_rev1
         static void Main(string[] args)
         {
             string input = "Hello World!";
-            char corner = '*';
-            char horizontalCharacter = '-';
-            char verticalCharacter = '|';
-            int horizontalPadding = 5;
-            int verticalPadding = 2;
+            PrettyPrintDesignDTO design = new PrettyPrintDesignDTO()
+            {
+                CornerCharacter = '*',
+                VerticalCharacter = '|',
+                HorizontalCharacter = '-',
+                HorizontalPadding = 5,
+                VerticalPadding = 2
+            };
 
-            PrintItPretty(input, corner, horizontalCharacter, verticalCharacter, horizontalPadding, verticalPadding);
+            PrintItPetty(input, design);
         }
-        public static void PrintItPretty(string input, char corner, char horizontalCharacter, char verticalCharacter, int horizontalPadding, int verticalPadding)
+        public static void PrintItPetty(string input, PrettyPrintDesignDTO design)
         {
-            int width = input.Length + (horizontalPadding * 2);
+            int contentWidth = input.Length + (design.HorizontalPadding * 2);
 
-            string line15 = corner + new string(horizontalCharacter, width) + corner;
-            string line24 = verticalCharacter + new string(' ', width) + verticalCharacter;
-            string line3 = verticalCharacter + new string(' ', horizontalPadding) + input + new string(' ', horizontalPadding) + verticalCharacter;
+            string horizontalBorderLine = $"{design.CornerCharacter}{new string(design.HorizontalCharacter, contentWidth)}{design.CornerCharacter}";
+            string verticalBorderLine = $"{design.VerticalCharacter}{new string(' ', contentWidth)}{design.VerticalCharacter}";
+            string inputLine = $"{design.VerticalCharacter}{new string(' ', design.HorizontalPadding)}{input}{new string(' ', design.HorizontalPadding)}{design.VerticalCharacter}";
 
-            Console.WriteLine(line15);
-            for (int i = 0; i <= verticalPadding; i++)
+            Console.WriteLine(horizontalBorderLine);
+            for(int i = 0; i<= design.VerticalPadding; i++)
             {
-                Console.WriteLine(line24);
+                Console.WriteLine(verticalBorderLine);
                 i++;
             }
-            Console.WriteLine(line3);
-            for (int i = 0; i <= verticalPadding; i++)
+            Console.WriteLine(inputLine);
+            for(int i = 0; i<= design.VerticalPadding; i++)
             {
-                Console.WriteLine(line24);
+                Console.WriteLine(verticalBorderLine);
                 i++;
             }
-            Console.WriteLine(line15);
+            Console.WriteLine(horizontalBorderLine);
         }
     }
+
+    public class PrettyPrintDesignDTO
+    {
+        public char CornerCharacter { get; set; }
+        public char HorizontalCharacter { get; set; }
+        public char VerticalCharacter { get; set; }
+        public int HorizontalPadding { get; set; }
+        public int VerticalPadding { get; set; }
+
+       }
 }
